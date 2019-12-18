@@ -15,18 +15,15 @@ Including another URLconf
 """
 
 from django.urls import path
-from django.http import HttpResponse
 
-
-def hello_world(request):
-    return HttpResponse('Hello, world!')
-
+from platzigram import views
 
 '''
 El primer parametro que recibe path es la url a la que esperasmos responder
 y el segundo es el nombre de la vista
 '''
 urlpatterns = [
-    path('hello-world', hello_world),
-
+    path('hello-world/', views.hello_world),
+    path('sorted/', views.sorted_by_get),
+    path('hi/<str:name>/<int:age>/', views.say_hi),
 ]
