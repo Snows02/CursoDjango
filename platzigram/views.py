@@ -11,8 +11,8 @@ from datetime import datetime
 
 def hello_world(request):
     """Return current server time"""
-    return HttpResponse('Oh, hi! Current server time is {now}'.format(
-        now=datetime.now().strftime('%b %dth, %Y - %H:%M hrs')
+    return HttpResponse('Oh, hi! Current server time is {1}{0}'.format(
+        datetime.now().strftime('%b %dth, %Y - %H:%M hrs'), 'aca estoy ',
     ))
 
 
