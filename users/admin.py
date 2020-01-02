@@ -25,10 +25,31 @@ class ProfileAdmin(admin.ModelAdmin):
         'user__first_name',
         'user__last_name'
     )
-
+    # list_filter se utiliza para poder agregar una barra lateral que nos ayude
+    # a encontrar (filtar) los registros que tenemos.
     list_filter = (
         'user__is_active',
         'user__is_staff',
         'created',
         'modified',
         )
+    # fieldsets es para poder agrupar parametros dentro de una categoria
+    # estructura: (tupla, (tupla 'name_section',{'fields': (parametros)}))
+    fieldsets = (
+        ('Profile', {
+            'fields': (('user', 'picture'),),
+        }),
+        ('Extra info', {
+            'fields': (
+                ('website', 'phone_number'),
+                ('biography')
+            ),
+        }),
+        ('Meta data', {
+            'fields': (
+                ('created', 'modified'),
+            )
+        }),
+    )
+
+    readonly_fields = ('created', 'modified', 'user')
