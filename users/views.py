@@ -13,6 +13,11 @@ from posts.models import Profile
 from django.db.utils import IntegrityError
 
 
+def update_profile(request):
+    """Update a user's profile view."""
+    return render(request, 'users/update_profile.html')
+
+
 def login_view(request):
     """Login view:"""
     # Estoy esperando recibir los datos por un metodos POST para autenticarlos
