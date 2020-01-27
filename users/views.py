@@ -48,7 +48,7 @@ def login_view(request):
         if user is not None:
             # Genera la sesion
             login(request, user)
-            return redirect('feed')
+            return redirect('posts:feed')
         else:
             return render(request, 'users/login.html', {
                 'error': 'Invalid username or password'
