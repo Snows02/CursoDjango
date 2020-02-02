@@ -2,23 +2,38 @@
 
 # Django
 from django.urls import path
-from django.views.generic import TemplateView
 
 # Views
 from users import views
 
 urlpatterns = [
 
-    # Posts
+    # Management
     path(
-        '<str:username>/',
-        TemplateView.as_view(template_name='users/detail.html'),
-        name='detail'
+        route='login/',
+        view=views.LoginView.as_view(),
+        name='login'
+    ),
+    path(
+        route='logout/',
+        view=views.Logout.as_view(),
+        name='logout'
+    ),
+    path(
+        route='signup/',
+        view=views.SingupView.as_view(),
+        name='signup'
+    ),
+    path(
+        route='me/profile/',
+        view=views.ProfileUpdateView.as_view(),
+        name='update'
     ),
 
-    # Management
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
-    path('signup/', views.signup, name='signup'),
-    path('me/profile/', views.update_profile, name='update_profile')
+    # Posts
+    path(
+        route='<str:username>/',
+        view=views.UserDetailView.as_view(),
+        name='detail'
+    )
 ]

@@ -8,9 +8,9 @@
 
 {% block container %}
 
-    {% if error %}
+    {% if form.errors %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{error}}</strong> 
+            <strong>Your username and password didn't match. Please try again</strong> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
